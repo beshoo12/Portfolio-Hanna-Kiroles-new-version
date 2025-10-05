@@ -3,31 +3,50 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio — Hanna Kiroles, Math & Accounting Teacher</title>
-  <!-- Modern Arabic font -->
+ <title>Hanna Kiroles - Math & Accounting Teacher</title>
+
+  <!-- Meta Description رئيسية -->
+  <meta name="description" content="مدرس رياضيات خصوصي بالكويت لجميع المراحل: ابتدائي، متوسط، ثانوي، وجامعي. تدريس الأوائل، حل اختبارات وواجبات، شرح مواد الاقتصاد التجاري، الإحصاء، المحاسبة، الفيزياء، والكيمياء. دروس خصوصية حضوري أو أونلاين. رقم مدرس رياضيات للتواصل.">
+
+  <!-- كلمات مفتاحية إضافية -->
+  <meta name="keywords" content="مدرس رياضيات، مدرس خصوصي، مدرس رياضيات ابتدائي، مدرس رياضيات ثانوي، مدرس رياضيات متوسط، مدرس خصوصي بالكويت، مدرس اقتصاد تجاري، مدرس محاسبة، مدرس إحصاء، مدرس فيزياء، مدرس كيمياء، مدرس أحياء، مدرس رياضيات جامعي، حل اختبارات وواجبات، مدرس خصوصي أونلاين، مدرس لطلاب الاوائل">
+  <meta name="author" content="Hanna Kerolles" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="index.css" />
   <link rel="icon" href="./WhatsApp Image 2025-09-30 at 21.49.34_22606f72.jpg">
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="container" id="nav">
-    <div class="brand" data-anim="delay-1">
-      <img src="./WhatsApp Image 2025-09-30 at 21.49.34_22606f72.jpg" alt="Hanaa Kerolles avatar" />
-      <div>
-        <div class="title">Hanna Kerolles</div>
-        <small style="color: rgb(255, 255, 255);" class="muted">Math & Accounting Teacher</small><br>
-        <small style="color: rgb(255, 255, 255);" class="muted"> استاذ المحاسبة المالية و الرياضيات</small>
-      </div>
+
+ <!-- Navigation -->
+<nav class="container" id="nav">
+  <div class="brand">
+    <img src="./WhatsApp Image 2025-09-30 at 21.49.34_22606f72.jpg" alt="Hanna Kerolles avatar" />
+    <div>
+      <div class="title">Hanna Kiroles</div>
+      <small class="muted" style="color: #fff;">Math & Accounting Teacher</small><br>
+      <small class="muted" style="color: #fff;">استاذ المحاسبة المالية و الرياضيات</small>
     </div>
-    <div class="nav-links" data-anim="delay-2">
-      <a style="color: rgb(255, 255, 255);" href="#about">معلومات عنى</a>
-      <a style="color: rgb(255, 255, 255);" href="#services">الخدمات</a>
-      <a style="color: rgb(255, 255, 255);" href="#certs">الشهادات</a>
-      <a style="color: rgb(255, 255, 255);" href="#contact">وسائل الأتصال</a>
-      
-    </div>
-  </nav>
+  </div>
+
+   <!-- زرار الهامبرجر -->
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+<div class="nav-links" data-anim="delay-2" id="nav-links">
+    <a style="color: rgb(255, 255, 255);" href="#hero">الرئيسية</a>
+    <a style="color: rgb(255, 255, 255);" href="#about">معلومات عنى</a>
+    <a style="color: rgb(255, 255, 255);" href="#services">الخدمات</a>
+    <a style="color: rgb(255, 255, 255);" href="#certs">الشهادات</a>
+    <a style="color: rgb(255, 255, 255);" href="#contact">وسائل الأتصال</a>
+  </div>
+</nav>
+
+
 
   <main class="container" style="direction: rtl;">
     <!-- Hero Section -->
@@ -73,7 +92,7 @@
           📚 سواء كنت تبحث عن الدعم الأكاديمي، أو التحضير للاختبارات، أو فهم أعمق لمفاهيم المحاسبة - فنحن هنا من أجلك!
         </p>
         <div class="cta-row">
-          <button style="font-size: 30px;" class="btn btn-primary" onclick="scrollToContact()"> <strong>حجز الحصة</strong></button>
+          <button style="font-size: 30px;" class="btn btn-primary" href="#contact" onclick="scrollToContact()"> <strong>حجز الحصة</strong></button>
           <a style="font-size: 30px;" class="btn btn-ghost" href="#services">استكشاف الخدمات</a>
         </div>
         <div  class="tags">
@@ -253,26 +272,43 @@
         <small class="muted">هل لديك سؤال؟ اترك رسالة وسأرد عليك قريبًا.</small>
       </div>
       <div class="contact">
-        <form onsubmit="handleSubmit(event)">
-          <label>Name: الاسم:</label>
-          <input required placeholder="Your Name" />
-          <label>Email: الإيميل:</label>
-          <input type="email" required placeholder="example@mail.com" />
-          <label>Message: رسالتك:</label>
-          <textarea required placeholder="?How can I help you"></textarea>
-          <div class="form-actions">
-            <button class="btn btn-primary" type="submit">Send</button>
-           <button class="btn-whatsapp" type="button" onclick="openWhatsApp()">
-            <i class="fab fa-whatsapp"></i> WhatsApp
-          </button>
-          </div>
-        </form>
-        <aside class="contact-info">
-          <h3>:Contact Information معلومات للتواصل الشخصى:</h3>
-          <p class="muted">📞 Phone ت الكويت:    0096565851296 </p>
-          <p class="muted">Hannakerlos7@gmail.com :✉ Email</p>
-          <p class="muted"> Kuwait — 🌍 Available for Online & Offline Sessions: متاح للحجز الخاص و الاونلاين .🌍</p>
-        </aside>
+        <form id="contactForm" action="https://formspree.io/f/myznjqap" method="POST" onsubmit="handleSubmit(event)">
+  <label>Name: الاسم:</label>
+  <input name="name" required placeholder="Your Name" />
+  
+  <label>Email: الإيميل:</label>
+  <input name="email" type="email" required placeholder="example@mail.com" />
+  
+  <label>Message: رسالتك:</label>
+  <textarea name="message" required placeholder="?How can I help you"></textarea>
+  
+  <div class="form-actions">
+    <button class="btn btn-primary" type="submit">Send</button>
+    <button class="btn-whatsapp" type="button" onclick="openWhatsApp()">
+      <i class="fab fa-whatsapp"></i> WhatsApp
+    </button>
+  </div>
+</form>
+
+   <aside class="contact-info">
+  <h3>Contact Information — معلومات للتواصل الشخصى:</h3>
+  
+  <p>
+    <span>📞</span>
+    0096565851296 <strong>:Phone (الكويت)</strong>
+  </p>
+  
+  <p>
+    <span>✉</span>
+  <strong>:Email:</strong> Hannakerlos7@gmail.com
+  </p>
+  
+  <p>
+    <span>🌍</span>
+   <strong>:Availability-Kuwait</strong><br>  متاح للحجز الخاص و الاونلاين 
+  </p>
+</aside>
+
       </div>
     </section>
 
@@ -286,7 +322,8 @@
     <img id="lightImg" src="" />
   </div>
 
-  <script src="index.ts"></script>
-  <script src="index.js"></script>
+  
+ <script src="dist/index.js"></script>
+
 </body>
 </html>

@@ -1,3 +1,4 @@
+"use strict";
 // ===== تحديث السنة تلقائيًا =====
 var yearElement = document.getElementById('year');
 if (yearElement) {
@@ -86,4 +87,3 @@ if (hamburger && navLinks) {
         });
     });
 }
-

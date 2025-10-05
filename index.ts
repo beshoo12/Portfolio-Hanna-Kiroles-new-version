@@ -1,9 +1,10 @@
+// ===== تحديث السنة تلقائيًا =====
 const yearElement: HTMLElement | null = document.getElementById('year');
 if (yearElement) {
   yearElement.textContent = new Date().getFullYear().toString();
 }
 
-// Dark Mode Toggle
+// ===== Dark Mode Toggle =====
 const darkToggle: HTMLElement | null = document.getElementById('darkToggle');
 if (darkToggle) {
   darkToggle.addEventListener('click', () => {
@@ -12,7 +13,7 @@ if (darkToggle) {
   });
 }
 
-// Lightbox for Certificates
+// ===== Lightbox للشهادات =====
 const openLightbox = (src: string): void => {
   const box: HTMLElement | null = document.getElementById('lightbox');
   const lightImg: HTMLImageElement | null = document.getElementById('lightImg') as HTMLImageElement;
@@ -29,15 +30,31 @@ const closeLightbox = (): void => {
   }
 };
 
-// Form Submission (Fake)
-const handleSubmit = (e: Event): void => {
-  e.preventDefault();
-  alert('Your message has been received — I will contact you soon.');
-  const form = e.target as HTMLFormElement;
-  form.reset();
+// ===== Form Submission باستخدام Fetch =====
+const handleSubmit = (event: Event): void => {
+  event.preventDefault();
+  const form = event.target as HTMLFormElement;
+
+  fetch(form.action, {
+    method: form.method,
+    body: new FormData(form),
+    headers: {
+      'Accept': 'application/json'
+    }
+  }).then(response => {
+    if (response.ok) {
+      alert('تم إرسال رسالتك بنجاح! سأرد عليك قريبًا.');
+      form.reset();
+    } else {
+      alert('حدث خطأ أثناء الإرسال، حاول مرة أخرى.');
+    }
+  }).catch(error => {
+    alert('حدث خطأ أثناء الإرسال، حاول مرة أخرى.');
+    console.error(error);
+  });
 };
 
-// Scroll to Contact
+// ===== Scroll to Contact =====
 const scrollToContact = (): void => {
   const contactSection: HTMLElement | null = document.getElementById('contact');
   if (contactSection) {
@@ -45,13 +62,14 @@ const scrollToContact = (): void => {
   }
 };
 
-// WhatsApp Link
-const openWhatsApp = (): void => {
-  const phone: string = '+96550123456';
-  window.open(`https://wa.me/${phone}`, '_blank');
+// ===== WhatsApp Link =====
+const openWhatsApp = () => {
+    const phone = '96565851296'; // الرقم الصحيح
+    window.open(`https://wa.me/${phone}`, '_blank');
 };
 
-// Animation on Load
+
+// ===== Animation on Load =====
 window.addEventListener('load', () => {
   document.querySelectorAll('[data-anim]').forEach((el: Element) => {
     const htmlEl = el as HTMLElement;
@@ -62,3 +80,20 @@ window.addEventListener('load', () => {
     htmlEl.style.opacity = '1';
   });
 });
+
+// ===== Navbar Hamburger Toggle =====
+const hamburger: HTMLElement | null = document.getElementById('hamburger');
+const navLinks: HTMLElement | null = document.getElementById('nav-links');
+
+if (hamburger && navLinks) {
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+  });
+
+  const links: NodeListOf<HTMLAnchorElement> = navLinks.querySelectorAll('a');
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('show');
+    });
+  });
+}
