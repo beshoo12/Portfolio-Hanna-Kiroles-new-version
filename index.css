@@ -209,13 +209,103 @@ section p {
 }
 
 .service:hover { transform: translateY(-6px); }
+
+
+/* ===== Articles ===== */
+#articles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 50px 20px; /* تقليل البادينج الجانبي عشان ياخد عرض الشاشة */
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  direction: rtl; /* التأكد من اتجاه النص من اليمين للشمال */
+  text-align: right; /* محاذاة النص لليمين */
+}
+
+.section-title {
+  grid-column: 1 / -1;
+  text-align: right; /* محاذاة العنوان لليمين */
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 18px;
+  padding: 15px 25px;
+  font-size: 1.8rem;
+  color: var(--accent-light); /* استخدام لون من :root بدل --primary-color */
+  margin-bottom: 25px;
+  margin-right: 20px; /* إضافة مسافة يمين للتأكيد على المحاذاة */
+  direction: rtl; /* التأكد من اتجاه النص */
+}
+
+.accordion-item {
+  background: var(--card);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+  direction: rtl; /* اتجاه النص من اليمين للشمال */
+  text-align: right; /* محاذاة النص لليمين */
+  height: auto;
+}
+
+.accordion-item:hover {
+  transform: translateY(-6px);
+}
+
+.accordion-button {
+  font-size: 1.5rem;
+  color: var(--accent-light); /* استخدام لون من :root */
+  margin-bottom: 10px;
+  text-align: right; /* محاذاة العنوان لليمين */
+  direction: rtl;
+}
+
+.accordion-content p {
+  color: #333;
+  font-size: 1.3rem;
+  line-height: 1.7;
+  margin-bottom: 10px;
+  text-align: right; /* محاذاة الفقرات لليمين */
+  direction: rtl;
+}
+
+
+
+
+
+
+
+
 /* ===== Certificates ===== */
+#certs {
+  padding: 20px 20px ; /* تقليل البادينج الجانبي عشان يستغل العرض */
+  direction: rtl; /* اتجاه النص من اليمين للشمال */
+  text-align: center; /* محاذاة القسم لليمين */
+  width: 100%; /* التأكد من استغلال العرض كامل */
+}
+
+.section-title {
+  text-align: right; /* محاذاة العنوان لليمين */
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 18px;
+  padding: 15px 25px;
+  font-size: 1.8rem;
+  color: var(--accent-light); /* لون من :root */
+  margin-bottom: 25px;
+  margin-right: 20px; /* مسافة يمين للتأكيد على المحاذاة */
+  direction: rtl;
+  display: inline-block; /* استبدال width: fit-content */
+}
+
 .cert-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 3 أعمدة */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* متجاوب */
   gap: 25px; /* مسافة بين الكروت */
-  margin: 30px auto;
-  justify-items: center; /* توسيط الكروت داخل الخلايا */
+  margin: 30px  ; /* إزالة auto عشان يبدأ من اليمين */
+  justify-content: end; /* محاذاة الكروت لليمين */
+  direction: rtl; /* اتجاه النص من اليمين للشمال */
+  text-align: right; /* محاذاة النص لليمين */
+  width: 100%; /* استغلال العرض كامل */
 }
 
 .cert-grid .cert-card {
@@ -224,51 +314,53 @@ section p {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  align-items: flex-end; /* محاذاة المحتوى لليمين */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   transition: all 0.4s ease;
   cursor: pointer;
   max-width: 600px; /* عرض أقصى للكروت */
- 
+  direction: rtl; /* اتجاه النص داخل الكارت */
+  text-align: right; /* محاذاة النص لليمين */
 }
 
 .cert-grid .cert-card:hover {
-  transform: translateY(-10px);
-  transform: scale(1.05);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+  transform: translateY(-5px) scale(0.55); /* دمج التأثيرات */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
 }
 
 .cert-grid img {
   background-color: #00000020; /* لون خفيف للخلفية */
-  padding: 15px;
-  width: 100%;
+  padding: 10px;
+  width: 50%;
   height: 250px; /* ارتفاع مناسب */
   object-fit: cover;
   border-radius: 12px;
-  margin-bottom: 15px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-  justify-content: center;
+  margin-bottom: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
+
 .cert-grid img:hover {
-  transform: scale(1.70);
+  transform: scale(1.30);
   transition: all 0.6s ease;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-} 
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
 
 /* نص الشهادة */
 .cert-grid .cert-card h3 {
   margin: 0;
   font-size: 1.1rem;
   font-weight: 600;
-  text-align: center;
+  text-align: right; /* محاذاة النص لليمين */
   color: var(--text);
+  direction: rtl;
 }
 
 .cert-grid .cert-card p {
   font-size: 0.95rem;
-  text-align: center;
-  color: var(--text-muted);
+  text-align: right; /* محاذاة النص لليمين */
+  color: var(--muted); /* لون من :root */
   margin-top: 5px;
+  direction: rtl;
 }
 
  .btn-whatsapp {
@@ -503,7 +595,7 @@ footer a:hover { text-decoration: underline; }
 /* شريط التمرير الأساسي */
 ::-webkit-scrollbar {
     width: 15px;        /* عرض السكروول بار */
-    height: 12px;       /* لو سكروول أفقي */
+    height: 16px;       /* لو سكروول أفقي */
 }
 
 /* خلفية الشريط */
@@ -527,7 +619,7 @@ footer a:hover { text-decoration: underline; }
 /* عند المرور بالماوس عليه */
 ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(
-        180deg,
+        45deg,
         var(--accent-pink),
         var(--accent-light),
         var(--primary-dark)

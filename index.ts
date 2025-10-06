@@ -4,14 +4,6 @@ if (yearElement) {
   yearElement.textContent = new Date().getFullYear().toString();
 }
 
-// ===== Dark Mode Toggle =====
-const darkToggle: HTMLElement | null = document.getElementById('darkToggle');
-if (darkToggle) {
-  darkToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    darkToggle.textContent = document.body.classList.contains('dark') ? '☀' : '🌙';
-  });
-}
 
 // ===== Lightbox للشهادات =====
 const openLightbox = (src: string): void => {
@@ -97,3 +89,43 @@ if (hamburger && navLinks) {
     });
   });
 }
+
+
+const texts: string[] = [
+  "أستاذ الرياضيات",
+  "أستاذ المحاسبة المالية",
+  "مدرب معتمد في التنمية البشرية",
+  "خبرة اكثر من 10 سنوات"
+];
+
+let currentIndex: number = 0;
+let charIndex: number = 0;
+const dynamicText = document.getElementById("dynamic-text") as HTMLSpanElement;
+const typingSpeed: number = 100;
+const deletingSpeed: number = 50;
+
+function type(): void {
+  const currentText: string = texts[currentIndex];
+  if (charIndex < currentText.length) {
+    dynamicText.textContent += currentText.charAt(charIndex);
+    charIndex++;
+    setTimeout(type, typingSpeed);
+  } else {
+    setTimeout(deleteText, 1500);
+  }
+}
+
+function deleteText(): void {
+  const currentText: string = texts[currentIndex];
+  if (charIndex > 0) {
+    dynamicText.textContent = currentText.substring(0, charIndex - 1);
+    charIndex--;
+    setTimeout(deleteText, deletingSpeed);
+  } else {
+    currentIndex = (currentIndex + 1) % texts.length;
+    setTimeout(type, 500);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", type);
+
