@@ -1,55 +1,75 @@
+console.log('الـ Script تحمّل بنجاح');
+console.log("السكربت بدأ التنفيذ");
+
 // ===== تحديث السنة تلقائيًا =====
-var yearElement = document.getElementById('year');
-if (yearElement) {
-    yearElement.textContent = new Date().getFullYear().toString();
-}
+const yearElement = document.getElementById('year');
+if (yearElement) yearElement.textContent = new Date().getFullYear().toString();
+
 // ===== Lightbox للشهادات =====
-var openLightbox = function (src) {
-    var box = document.getElementById('lightbox');
-    var lightImg = document.getElementById('lightImg');
-    if (box && lightImg) {
-        lightImg.src = src;
-        box.classList.add('open');
-    }
+const openLightbox = (src) => {
+  const box = document.getElementById('lightbox');
+  const lightImg = document.getElementById('lightImg');
+  if (box && lightImg) {
+    lightImg.src = src;
+    box.classList.add('open');
+  }
 };
-var closeLightbox = function () {
-    var box = document.getElementById('lightbox');
-    if (box) {
-        box.classList.remove('open');
-    }
+
+const closeLightbox = () => {
+  const box = document.getElementById('lightbox');
+  if (box) box.classList.remove('open');
 };
+
 // ===== Form Submission باستخدام Fetch =====
-var handleSubmit = function (event) {
-    event.preventDefault();
-    var form = event.target;
-    fetch(form.action, {
-        method: form.method,
-        body: new FormData(form),
-        headers: {
-            'Accept': 'application/json'
-        }
-    }).then(function (response) {
-        if (response.ok) {
-            alert('تم إرسال رسالتك بنجاح! سأرد عليك قريبًا.');
-            form.reset();
-        }
-        else {
-            alert('حدث خطأ أثناء الإرسال، حاول مرة أخرى.');
-        }
-    }).catch(function (error) {
-        alert('حدث خطأ أثناء الإرسال، حاول مرة أخرى.');
-        console.error(error);
-    });
+const handleSubmit = (event) => {
+  event.preventDefault();
+  const form = event.target;
+  fetch(form.action, {
+    method: form.method,
+    body: new FormData(form),
+    headers: { 'Accept': 'application/json' }
+  }).then(response => response.ok ? (alert('تم الإرسال بنجاح'), form.reset()) : alert('حدث خطأ'))
+    .catch(error => (alert('حدث خطأ'), console.error(error)));
 };
+
 // ===== Scroll to Contact =====
-var scrollToContact = function () {
-    var contactSection = document.getElementById('contact');
-    if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
+const scrollToContact = () => {
+  const contactSection = document.getElementById('contact');
+  if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
 };
+
 // ===== WhatsApp Link =====
-var openWhatsApp = function () {
-    var phone = '96565851296'; // الرقم الصحيح
-    window.open("https://wa.me/".concat(phone), '_blank');
+const openWhatsApp = () => window.open(`https://wa.me/96565851296`, '_blank');
+
+// ===== Accordion (دالة منفصلة) =====
+const initAccordion = () => {
+  const articlesSection = document.getElementById('articles');
+  if (!articlesSection) {
+    console.warn('لم يتم العثور على قسم المقالات');
+    return;
+  }
+
+  const accordionItems = articlesSection.querySelectorAll('.accordion-item');
+  accordionItems.forEach(item => {
+    const button = item.querySelector('.accordion-button');
+    button.addEventListener('click', () => {
+      item.classList.toggle('active');
+    });
+  });
 };
+
+// ===== Hamburger Menu Toggle =====
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+
+if (hamburger && navLinks) {
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+    hamburger.classList.toggle('active');
+  });
+}
+
+// ===== Initialize on Load =====
+document.addEventListener('DOMContentLoaded', () => {
+  initAccordion();
+});
